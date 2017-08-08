@@ -49,3 +49,29 @@ button.onclick = function() {
         request.send(null);
         
     };
+    var submit = document.getElementById('submit');
+    submit.onclick = function() {
+        var request = new XMLHttpRequest();
+    
+    request.onreadystatechange = function(){
+        
+        if(request.readyState === XMLHttpRequest.DONE){
+            
+            if(request.status === 200){
+                var texts = request.responseText;
+                texts = JSON.parse(texts);
+                var list = ``;
+                for(var i=0; i<texts.length; i++){
+                    list += '<p>' + texts + '</p>';
+                }
+             
+            }
+            var div = document.getElementById('textdisp');
+            div.innerHTML = list;
+        }
+    }
+    };
+    var textInput = document.getElementById('textarea');
+    var text = textInput.value;
+    request.open( 'GET' ,'http://oniljs93.imad.hasura-app.io/:articles/submit-text?text='+ text, true);
+        request.send(null);
