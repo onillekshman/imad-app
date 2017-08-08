@@ -1,77 +1,38 @@
-var button = document.getElementById('counter');
-
-button.onclick = function() {
-    var request = new XMLHttpRequest();
-    
-    request.onreadystatechange = function(){
-        
-        if(request.readyState === XMLHttpRequest.DONE){
-            
-            if(request.status === 200){
+<!doctype html>
+<html>
+    <head>
+        <link href="/ui/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="center">
+            <img id="logo" src="https://pbs.twimg.com/profile_images/722260705722761217/wocNFPrS_400x400.jpg" class="img-medium"/>
+            </div>
+         
+            <br>
+            <h3>Personal</h3>
+            <div>
+                Hi, I'm Onil Lekshman J S
+            </div>
+            <hr/>
+            <h3>Professional</h3>
+            <div>
+                I work at Syflani techonlogies
+            </div>
+            <hr/>
+            <div class="footer">
+                This Button <button id="counter">Click Me!!!</button> has been clicked <span id="count">0</span> times.
+            </div>
+            <hr/>
+            <input type="text" id="name" placeholder="name"></input>
+            <input type="submit" id="submit_btn" value="submit"></input>
+            <ul id="namelist">
                 
-                var counter = request.responseText;
-                var span = document.getElementById('count');
-                span.innerHTML = counter.toString();
-                
-            }
-        }
-    };
-    request.open( 'GET' ,'http://oniljs93.imad.hasura-app.io/counter',true);
-    request.send(null);
-    
-    };
-    
-    var submit = document.getElementById('submit_btn');
-    submit.onclick = function() {
-        var request = new XMLHttpRequest();
-    
-    request.onreadystatechange = function(){
-        
-        if(request.readyState === XMLHttpRequest.DONE){
+            </ul>
             
-            if(request.status === 200){
-                
-                var names = request.responseText;
-                names = JSON.parse(names);
-                var list = '';
-                for(var i=0; i<names.length; i++){
-                    list += '<li>' + names[i] + '</li>';
-                }
-                var ul = document.getElementById('namelist');
-                ul.innerHTML = list;
-            }
-        }
-        
-        };
-        var nameInput = document.getElementById('name');
-        var name = nameInput.value;
-        request.open( 'GET' ,'http://oniljs93.imad.hasura-app.io/submit-name?name='+ name, true);
-        request.send(null);
-        
-    };
-    var submit = document.getElementById('submit');
-    submit.onclick = function() {
-        var request = new XMLHttpRequest();
-    
-    request.onreadystatechange = function(){
-        
-        if(request.readyState === XMLHttpRequest.DONE){
             
-            if(request.status === 200){
-                var texts = request.responseText;
-                texts = JSON.parse(texts);
-                var list = ``;
-                for(var i=0; i<texts.length; i++){
-                    list += '<p>' + texts + '</p>';
-                }
-             
-            }
-            var div = document.getElementById('textdisp');
-            div.innerHTML = list;
-        }
-    }
-    };
-    var textInput = document.getElementById('textarea');
-    var text = textInput.value;
-    request.open( 'GET' ,'http://oniljs93.imad.hasura-app.io/:articles/submit-text?text='+ text, true);
-        request.send(null);
+             </div>
+        <script type="text/javascript" src="/ui/main.js">
+        </script>
+    </body>
+</html>
