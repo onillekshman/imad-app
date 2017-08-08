@@ -75,6 +75,8 @@ function createTemplate(data){
         <div>
             ${content}
         </div>
+        <input type="textarea" id="textarea" placeholder="type here" size="50"></input>
+        <input type="submit" value="submit" id="sumit"></input>
         </div>
     </body>
 </html>
