@@ -77,6 +77,8 @@ function createTemplate(data){
         </div>
         <input type="textarea" id="textarea" placeholder="type here" size="50"></input>
         <input type="submit" value="submit" id="sumit"></input>
+        <div id="textdisp">
+        </div>
         </div>
     </body>
 </html>
@@ -106,6 +108,14 @@ app.get('/:articleName', function (req, res) {
     var articleName = req.params.articleName;
    res.send(createTemplate(articles[articleName]));
 });
+
+var texts = ``;
+app.get('/submit-text', function(req,res){
+    var text = req.query.text;
+    texts.push(text);
+    res.send(JSON.stringify(texts));
+});
+
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
