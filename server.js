@@ -7,6 +7,7 @@ var config = {
     user: 'oniljs93',
     database: 'oniljs93',
     host: 'db.imad.hasura-app.io',
+    port: '5432',
     password: process.env.DB_PASSWORD
 };
 
